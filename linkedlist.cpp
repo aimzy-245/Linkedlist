@@ -101,3 +101,28 @@ void updateStatusMobil() {
     system("pause");
 }
 
+void hapusMobil() {
+    headerMenu();
+    cout << "Hapus Data Mobil\n";
+    garis();
+    tampilMobil();
+    cout << "Masukkan ID mobil yang akan dihapus: ";
+    int id; cin >> id;
+    Mobil* temp = head;
+    Mobil* prev = nullptr;
+    while (temp && temp->id != id) {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (!temp) {
+        cout << "Mobil tidak ditemukan!\n";
+    } else {
+        if (!prev) head = temp->next;
+        else prev->next = temp->next;
+        delete temp;
+        cout << "Data mobil berhasil dihapus!\n";
+    }
+    system("pause");
+}
+
+
