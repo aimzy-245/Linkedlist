@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 using namespace std;
 
@@ -14,18 +15,21 @@ struct Mobil {
 Mobil* head = nullptr;
 int idCounter = 1;
 
+// Membuat garis pemisah
 void garis(int n = 50) {
     for (int i = 0; i < n; ++i) cout << "=";
     cout << endl;
 }
 
+// Header Menu
 void headerMenu() {
     system("cls");  // Bersihkan layar (khusus Windows)
     garis();
-    cout << "INVENTARIS SEWA MOBIL" << endl;
+    cout << setw(30) << "INVENTARIS SEWA MOBIL" << endl;
     garis();
 }
 
+// Tambah Data Mobil
 void tambahMobil() {
     headerMenu();
     cout << "Tambah Data Mobil\n";
@@ -49,8 +53,7 @@ void tambahMobil() {
     system("pause");
 }
 
-#include <iomanip>
-
+// Tampil Data Mobil
 void tampilMobil(bool tampilSemua = true, bool status = false) {
     headerMenu();
     if (tampilSemua)
@@ -80,6 +83,7 @@ void tampilMobil(bool tampilSemua = true, bool status = false) {
     system("pause");
 }
 
+// Ubah Status Mobil
 void updateStatusMobil() {
     headerMenu();
     cout << "Tandai Mobil Disewa/Dikembalikan\n";
@@ -101,6 +105,7 @@ void updateStatusMobil() {
     system("pause");
 }
 
+// Hapus Mobil
 void hapusMobil() {
     headerMenu();
     cout << "Hapus Data Mobil\n";
@@ -125,6 +130,7 @@ void hapusMobil() {
     system("pause");
 }
 
+// Cari Mobil Berdasarkan Merk
 void cariMobil() {
     headerMenu();
     cout << "Cari Mobil Berdasarkan Merk\n";
@@ -154,6 +160,7 @@ void cariMobil() {
     system("pause");
 }
 
+// Main Program
 int main() {
     int pilihan;
     do {
@@ -192,4 +199,3 @@ int main() {
     }
     return 0;
 }
-
