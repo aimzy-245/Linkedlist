@@ -48,3 +48,56 @@ void tambahMobil() {
     cout << "Data mobil berhasil ditambahkan!\n";
     system("pause");
 }
+
+#include <iomanip>
+
+void tampilMobil(bool tampilSemua = true, bool status = false) {
+    headerMenu();
+    if (tampilSemua)
+        cout << "Daftar Semua Mobil\n";
+    else
+        cout << (status ? "Daftar Mobil Disewa\n" : "Daftar Mobil Tersedia\n");
+    garis();
+    cout << left << setw(5) << "ID" << setw(15) << "Merk" << setw(15) << "Tipe" 
+         << setw(8) << "Tahun" << setw(12) << "Status" << endl;
+    garis();
+    
+    Mobil* temp = head;
+    bool ada = false;
+    while (temp) {
+        if (tampilSemua || temp->disewa == status) {
+            cout << left << setw(5) << temp->id
+                 << setw(15) << temp->merk
+                 << setw(15) << temp->tipe
+                 << setw(8) << temp->tahun
+                 << setw(12) << (temp->disewa ? "Disewa" : "Tersedia") << endl;
+            ada = true;
+        }
+        temp = temp->next;
+    }
+    if (!ada) cout << "Tidak ada data mobil.\n";
+    garis();
+    system("pause");
+}
+
+void updateStatusMobil() {
+    headerMenu();
+    cout << "Tandai Mobil Disewa/Dikembalikan\n";
+    garis();
+    tampilMobil();
+    cout << "Masukkan ID mobil: ";
+    int id; cin >> id;
+    Mobil* temp = head;
+    while (temp && temp->id != id) temp = temp->next;
+    if (!temp) {
+        cout << "Mobil tidak ditemukan!\n";
+    } else {
+        cout << "Status saat ini: " << (temp->disewa ? "Disewa" : "Tersedia") << endl;
+        cout << "Ubah status menjadi (1: Disewa, 0: Tersedia): ";
+        int st; cin >> st;
+        temp->disewa = (st == 1);
+        cout << "Status berhasil diubah!\n";
+    }
+    system("pause");
+}
+
