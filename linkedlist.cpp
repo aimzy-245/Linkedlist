@@ -13,3 +13,8 @@ struct Mobil {
 
 Mobil* head = nullptr;
 int idCounter = 1;
+
+void garis(int n = 50) {
+    for (int i = 0; i < n; ++i) cout << "=";
+    cout << endl;
+}
