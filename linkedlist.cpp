@@ -18,3 +18,10 @@ void garis(int n = 50) {
     for (int i = 0; i < n; ++i) cout << "=";
     cout << endl;
 }
+
+void headerMenu() {
+    system("cls");  // Bersihkan layar (khusus Windows)
+    garis();
+    cout << "INVENTARIS SEWA MOBIL" << endl;
+    garis();
+}
